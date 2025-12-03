@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Ebook, Formulários de Coleta de Dados em Pesquisas com Seres Humanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Guia prático para construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, alinhado às normas da CONEP, ao Sistema CEP, Conep e à LGPD." />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-color-light: #f7f7f7;
+      --text-color-light: #222222;
+      --accent-color: #0055aa;
+      --border-color-light: #dddddd;
+      --bg-color-dark: #121212;
+      --text-color-dark: #f0f0f0;
+      --border-color-dark: #333333;
+      --code-bg-light: #eeeeee;
+      --code-bg-dark: #1f1f1f;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg-color-light);
+      color: var(--text-color-light);
+    }
+
+    body.dark {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem 1.25rem;
+    }
+
+    header {
+      margin-bottom: 1.5rem;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    #toggle-theme {
+      border: 1px solid var(--border-color-light);
+      background: transparent;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    body.dark #toggle-theme {
+      border-color: var(--border-color-dark);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0.25rem 0 0.75rem 0;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 0.25rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0.4rem 0 0.7rem 0;
+    }
+
+    ul {
+      padding-left: 1.3rem;
+      margin: 0.3rem 0 0.7rem 0;
+    }
+
+    li {
+      margin: 0.15rem 0;
+    }
+
+    .meta-block {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .meta-block p {
+      margin: 0.15rem 0;
+    }
+
+    .separator {
+      margin: 1rem 0;
+      border: 0;
+      border-top: 1px solid currentColor;
+      opacity: 0.2;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    body.dark a {
+      color: #66aaff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .toc {
+      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
+    }
+
+    .toc ul {
+      list-style-type: disc;
+    }
+
+    code {
+      font-family: "Fira Code", Consolas, "Courier New", monospace;
+      font-size: 0.9rem;
+      padding: 0.05rem 0.2rem;
+      border-radius: 3px;
+      background-color: var(--code-bg-light);
+    }
+
+    body.dark code {
+      background-color: var(--code-bg-dark);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    @media (min-width: 900px) {
+      .page {
+        padding: 2rem 0 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="top-bar">
+        <div>Modo escuro</div>
+        <button id="toggle-theme" type="button">Ativar</button>
+      </div>
+
+      <div style="font-size:0.95rem; opacity:0.9;">Guia prático em instrumentos de coleta de dados</div>
+      <h1>Formulários de Coleta de Dados em Pesquisas com Seres Humanos</h1>
+      <p>
+        Ebook é orientado às normas brasileiras para apoiar a construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, com foco em autonomia, sigilo, privacidade e proteção de dados.
+      </p>
+
+      <hr class="separator" />
+
+      <div class="meta-block">
+        <p>Tempo de leitura, 18 minutos</p>
+        <p>Quantidade de palavras, aproximadamente 3.500</p>
+        <p>Criação, 03/12/2025</p>
+        <p>Atualização, 03/12/2025</p>
+      </div>
+
+      <div class="meta-block">
+        <p>Baseado nas Resoluções, CNS 466/2012 e 510/2016</p>
+        <p>Foco em Sistema CEP, Conep</p>
+        <p>Uso acadêmico e regulatório</p>
+      </div>
+
+      <hr class="separator" />
+
+      <section class="toc" aria-label="Índice">
+        <h2 id="indice">Índice</h2>
+        <ul>
+          <li><a href="#sec-1">1. Para que servem os Formulários de Coleta de Dados</a></li>
+          <li><a href="#sec-2">2. Princípios éticos que orientam a elaboração do instrumento</a></li>
+          <li><a href="#sec-3">3. Requisitos obrigatórios para qualquer Formulário de Coleta de Dados</a></li>
+          <li><a href="#sec-4">4. Como estruturar um Formulário de Coleta de Dados</a></li>
+          <li><a href="#sec-5">5. Erros frequentes que geram pendências no CEP</a></li>
+          <li><a href="#sec-6">6. Como analisar o instrumento antes de enviar ao CEP</a></li>
+          <li><a href="#sec-7">7. Perguntas que exigem aviso de sensibilidade</a></li>
+          <li><a href="#sec-8">8. Proteção de dados e LGPD</a></li>
+          <li><a href="#sec-9">9. Responsabilidades do pesquisador durante a aplicação</a></li>
+          <li><a href="#sec-10">10. GPT Personalizado</a></li>
+          <li><a href="#sec-11">11. Considerações finais</a></li>
+        </ul>
+      </section>
+    </header>
+
+    <main>
+      <section id="sec-1">
+        <h2>1. Para que servem os Formulários de Coleta de Dados</h2>
+        <p>
+          Os formulários de coleta de dados são instrumentos essenciais para registrar, de forma padronizada, as informações fornecidas pelos participantes ou observadas pelo pesquisador. Eles reduzem variações entre entrevistadores, organizam o fluxo das perguntas e fortalecem a consistência metodológica da pesquisa. Um bom formulário melhora a comparabilidade entre participantes, facilita a análise estatística e reduz erros de registro.
+        </p>
+        <p>
+          No entanto, a importância desses instrumentos vai além da técnica. Um formulário mal planejado pode expor participantes, gerar constrangimento, induzir respostas ou violar privacidade. Cada pergunta representa uma interação concreta entre pesquisa e ser humano. Por isso, a construção do instrumento é um ato de responsabilidade ética, ligado diretamente à proteção da dignidade, da integridade e dos direitos dos participantes, e não apenas uma exigência burocrática do sistema CEP, Conep.
+        </p>
+      </section>
+
+      <section id="sec-2">
+        <h2>2. Princípios éticos que orientam a elaboração do instrumento</h2>
+        <p>
+          A elaboração de um formulário deve ser guiada por princípios éticos que materializam, na prática, os fundamentos da bioética e das resoluções brasileiras de ética em pesquisa.
+        </p>
+        <h3>2.1. Autonomia</h3>
+        <p>
+          O participante deve sentir que está no controle de sua participação, podendo responder, pular perguntas ou interromper a coleta a qualquer momento. A inclusão de opções de recusa e a linguagem clara que reforça a voluntariedade traduzem esse princípio. A autonomia não é apenas uma ideia abstrata, mas se concretiza em elementos do instrumento, como alternativas de não resposta e lembretes explícitos de liberdade.
+        </p>
+        <h3>2.2. Proteção</h3>
+        <p>
+          Perguntas podem gerar riscos emocionais, sociais e de privacidade, especialmente quando abordam temas sensíveis, como saúde, renda, violência ou discriminação. Minimizar esses riscos é essencial para preservar o bem estar do participante e evitar danos que podem surgir mesmo em pesquisas classificadas como de risco mínimo. A forma, a ordem e a profundidade das perguntas são escolhas que influenciam diretamente esse nível de proteção.
+        </p>
+        <h3>2.3. Proporcionalidade e minimização da carga</h3>
+        <p>
+          Um formulário enxuto, bem organizado e adequado ao perfil do público reduz fadiga, melhora a qualidade das respostas e demonstra respeito ao tempo e à energia dos participantes. A quantidade e o tipo de perguntas precisam ser proporcionais aos objetivos do estudo. Coletar mais dados do que o necessário aumenta riscos, gera sobrecarga e pode violar princípios éticos e a própria legislação de proteção de dados.
+        </p>
+      </section>
+
+      <section id="sec-3">
+        <h2>3. Requisitos obrigatórios para qualquer Formulário de Coleta de Dados</h2>
+        <p>
+          Alguns requisitos são indispensáveis para que um formulário seja eticamente aceitável e alinhado às normas brasileiras. Eles não existem apenas para atender resoluções, mas para proteger efetivamente a autonomia, o sigilo e a privacidade dos participantes.
+        </p>
+        <h3>3.1. Evitar a coleta de dados identificáveis sem necessidade</h3>
+        <p>
+          Nome, endereço, CPF, RG, telefone, e mail ou qualquer dado que permita reconhecer diretamente a pessoa não devem ser incluídos, salvo quando forem estritamente necessários para o objetivo da pesquisa e estiverem detalhadamente justificados no protocolo. A ausência desses dados reduz o risco de exposição, simplifica medidas de segurança e diminui o impacto de possíveis vazamentos.
+        </p>
+        <h3>3.2. Incluir a opção “Não desejo responder” em todas as perguntas fechadas</h3>
+        <p>
+          Em perguntas fechadas, a presença da alternativa “Não desejo responder” é a forma mais concreta de garantir liberdade real de recusa. Sem essa opção, o participante pode sentir que é obrigado a responder ou que sua recusa será mal vista. Essa pequena escolha de design do instrumento está diretamente ligada à proteção da autonomia e à redução da coerção implícita.
+        </p>
+        <h3>3.3. Inserir a frase obrigatória em perguntas abertas</h3>
+        <p>
+          Nas perguntas abertas, deve constar, no cabeçalho, a frase:
+        </p>
+        <p>
+          <em>Sua participação é voluntária. Você pode deixar de responder qualquer pergunta ou interromper a entrevista a qualquer momento, sem qualquer prejuízo.</em>
+        </p>
+        <p>
+          Perguntas abertas exigem maior elaboração, podem despertar lembranças sensíveis e aumentar o risco de exposição. O lembrete explícito da liberdade de recusa reduz ansiedade, protege o participante e reforça que ele não é obrigado a revelar algo que o deixe desconfortável.
+        </p>
+        <h3>3.4. Evitar excesso de perguntas</h3>
+        <p>
+          Instrumentos excessivamente longos causam fadiga, aumentam a chance de respostas superficiais ou apressadas e podem levar à desistência. Perguntas supérfluas não agregam valor científico relevante e apenas ampliam o risco ético e operacional. A seleção cuidadosa do que é realmente necessário é uma forma de respeito ao participante.
+        </p>
+        <h3>3.5. Evitar linguagem técnica, jurídica ou pouco acessível</h3>
+        <p>
+          Expressões técnicas ou jurídicas pouco familiares ao público alvo podem gerar incompreensão, constrangimento ou respostas equivocadas. A linguagem do formulário deve ser clara, direta e compatível com o nível de escolaridade e o contexto sociocultural dos participantes. Explicar termos quando indispensáveis é tão importante quanto simplificar sempre que possível.
+        </p>
+        <h3>3.6. Evitar perguntas indutoras ou enviesadas</h3>
+        <p>
+          Perguntas formuladas de maneira a sugerir uma resposta, ou que transmitam julgamento de valor, prejudicam tanto a ética quanto a qualidade científica. Elas pressionam os participantes a responderem o que imaginam ser desejado pela equipe de pesquisa. A neutralidade das questões é uma forma de respeito à liberdade de opinião e, ao mesmo tempo, um requisito metodológico para produzir dados confiáveis.
+        </p>
+      </section>
+
+      <section id="sec-4">
+        <h2>4. Como estruturar um Formulário de Coleta de Dados</h2>
+        <p>
+          Uma boa estrutura reduz ansiedade, melhora a compreensão e organiza o raciocínio do participante. A seguir, uma proposta de organização em blocos.
+        </p>
+
+        <h3>4.1. Cabeçalho de abertura</h3>
+        <p>
+          O cabeçalho inicial é o momento de estabelecer confiança. Nele, o pesquisador reforça que a pesquisa foi aprovada por um Comitê de Ética, que a participação é voluntária e que não haverá qualquer prejuízo pela recusa ou pela interrupção da entrevista. Esse trecho ajuda a reduzir tensão, esclarece o contexto e reafirma a centralidade da autonomia antes da primeira pergunta ser feita.
+        </p>
+
+        <h3>4.2. Critérios de elegibilidade</h3>
+        <p>
+          Em seguida, é recomendado incluir perguntas simples que confirmem se a pessoa atende aos critérios de inclusão da pesquisa, como idade mínima, leitura e concordância com o Termo de Consentimento ou presença de determinada condição clínica, quando aplicável. Essas questões devem ser objetivas, com respostas claras e, sempre, com a opção “Não desejo responder”, mesmo nos casos em que a elegibilidade dependa da resposta.
+        </p>
+
+        <h3>4.3. Caracterização do participante</h3>
+        <p>
+          A caracterização deve ser feita com categorias amplas, suficientes para fins de análise estatística, mas sem expor dados pessoais desnecessários. Em vez de perguntar a idade exata, pode se usar faixas etárias. Em vez da profissão específica, grupos ocupacionais. O objetivo é equilibrar a necessidade de informação com a proteção da privacidade, reduzindo o risco de identificação individual ou de grupos pequenos.
+        </p>
+
+        <h3>4.4. Bloco temático principal</h3>
+        <p>
+          O bloco temático principal reúne as perguntas diretamente ligadas aos objetivos da pesquisa. Aqui, a clareza e a coerência são fundamentais. As questões devem ser formuladas em linguagem acessível, evitando ambiguidade e duplicidade. A sequência das perguntas deve favorecer uma progressão lógica, começando por temas mais gerais e avançando, quando necessário, para pontos mais específicos, sempre com respeito ao conforto do participante.
+        </p>
+
+        <h3>4.5. Pergunta aberta opcional</h3>
+        <p>
+          Perguntas abertas podem ser úteis para captar percepções, experiências pessoais e comentários livres. Contudo, devem ser usadas com parcimônia. Antes desse tipo de questão, é essencial incluir o lembrete de que a resposta é opcional e que o participante pode deixar o campo em branco se preferir. Isso é especialmente importante quando o tema é sensível ou potencialmente desencadeador de sofrimento.
+        </p>
+      </section>
+
+      <section id="sec-5">
+        <h2>5. Erros frequentes que geram pendências no CEP</h2>
+        <p>
+          As pendências emitidas pelos Comitês de Ética em Pesquisa refletem problemas práticos que podem ser evitados na etapa de elaboração do formulário. Os erros a seguir são recorrentes.
+        </p>
+        <ul>
+          <li>Coleta de dados pessoais identificáveis sem justificativa clara ou proporcional ao objetivo do estudo.</li>
+          <li>Ausência da opção “Não desejo responder” em perguntas fechadas, o que fragiliza a garantia de autonomia.</li>
+          <li>Inclusão de perguntas sensíveis sem aviso prévio ou sem medidas adequadas de acolhimento e proteção.</li>
+          <li>Formulários excessivamente longos e complexos, que não correspondem à relevância do problema estudado.</li>
+          <li>Linguagem técnica, burocrática ou inadequada ao perfil sociocultural do público alvo.</li>
+          <li>Questões que expõem crenças religiosas, posicionamentos políticos, condição de saúde ou renda sem necessidade metodológica bem justificada.</li>
+        </ul>
+        <p>
+          Identificar e corrigir esses problemas antes da submissão reduz o tempo de tramitação, diminui retrabalho e, principalmente, qualifica a experiência do participante diante da pesquisa.
+        </p>
+      </section>
+
+      <section id="sec-6">
+        <h2>6. Como analisar o instrumento antes de enviar ao CEP</h2>
+        <p>
+          Um checklist estruturado ajuda o pesquisador a revisar o formulário com olhar crítico, aproximando sua prática das exigências éticas e regulatórias.
+        </p>
+        <ul>
+          <li>O formulário solicita algum dado identificável sem que isso seja necessário para os objetivos do estudo?</li>
+          <li>Todas as perguntas fechadas incluem a alternativa “Não desejo responder”?</li>
+          <li>As perguntas abertas trazem a frase padronizada que reforça a voluntariedade e a possibilidade de interromper a entrevista?</li>
+          <li>A linguagem é compatível com o nível de compreensão do público alvo, incluindo pessoas com menor escolaridade formal?</li>
+          <li>A quantidade de perguntas é proporcional ao problema investigado, sem excesso de itens supérfluos?</li>
+          <li>Existe coerência entre as perguntas, os riscos descritos, os benefícios esperados e os procedimentos previstos no protocolo?</li>
+        </ul>
+        <p>
+          Esse tipo de análise contribui para que o instrumento seja, ao mesmo tempo, cientificamente robusto e eticamente cuidadoso, reduzindo a distância entre teoria e prática em ética em pesquisa.
+        </p>
+      </section>
+
+      <section id="sec-7">
+        <h2>7. Perguntas que exigem aviso de sensibilidade</h2>
+        <p>
+          Certos temas podem acionar memórias dolorosas, provocar sofrimento emocional ou constrangimento. Isso é particularmente verdadeiro para questões sobre violência, abuso, discriminação, luto, doenças graves, saúde mental, sexualidade ou experiências traumáticas. Nesses casos, o formulário deve incluir um aviso claro antes do bloco sensível, informando que as perguntas podem ser desconfortáveis e reforçando a liberdade de não responder.
+        </p>
+        <p>
+          Esse aviso não existe apenas para cumprir resolução, mas para reconhecer que o participante é uma pessoa com história e vulnerabilidades. Ao explicitar a possibilidade de recusa e a disponibilidade de apoio quando previsto no protocolo, o pesquisador transforma o instrumento em uma ferramenta de cuidado, e não apenas de coleta de informação.
+        </p>
+      </section>
+
+      <section id="sec-8">
+        <h2>8. Proteção de dados e LGPD</h2>
+        <p>
+          A Lei Geral de Proteção de Dados Pessoais introduz princípios como finalidade, adequação, necessidade e minimização, que devem orientar a construção dos formulários. Quanto menos dados pessoais forem coletados, menor será a superfície de risco para o participante e menores serão as exigências de proteção técnica e administrativa.
+        </p>
+        <p>
+          O instrumento deve evitar registrar informações desnecessárias e orientar o pesquisador a não anotar comentários espontâneos que possam identificar diretamente uma pessoa, como nomes, números de documentos ou detalhes muito específicos de cargos e locais. Ao favorecer a anonimização já na coleta, o formulário facilita a conformidade com a LGPD e protege tanto os participantes quanto as instituições envolvidas.
+        </p>
+      </section>
+
+      <section id="sec-9">
+        <h2>9. Responsabilidades do pesquisador durante a aplicação</h2>
+        <p>
+          Mesmo o melhor formulário pode falhar se a aplicação for inadequada. O pesquisador é responsável por garantir condições de privacidade, por evitar qualquer forma de pressão e por acolher dúvidas e hesitações com respeito. É fundamental que as respostas sejam registradas de forma fiel, sem interpretações pessoais, comentários paralelos ou julgamentos.
+        </p>
+        <p>
+          Cabe também ao pesquisador reconhecer sinais de sofrimento, desconforto intenso ou insegurança. Nesses casos, interromper a entrevista e oferecer encaminhamento, quando previsto, é mais importante do que completar o instrumento. A maneira como o formulário é administrado faz parte da proteção ética tanto quanto a sua redação. Aplicar o instrumento com sensibilidade, atenção e respeito transforma o processo de coleta em um encontro mais humano e responsável.
+        </p>
+      </section>
+
+      <section id="sec-10">
+        <h2>10. GPT Personalizado</h2>
+        <p>
+          Para apoiar pesquisadores na verificação ética e técnica de seus instrumentos de coleta de dados, foi desenvolvido um GPT personalizado com base nas normas da CONEP e nas boas práticas nacionais de ética em pesquisa. Esse recurso analisa o formulário enviado, identifica possíveis riscos, aponta pendências frequentes e sugere ajustes que podem reduzir problemas na submissão ao Comitê de Ética.
+        </p>
+        <p>
+          O GPT personalizado é útil tanto para pesquisadores iniciantes, que ainda estão se familiarizando com o sistema CEP, Conep, quanto para pesquisadores experientes que desejam um checklist inteligente de revisão. Ele funciona como um apoio adicional para qualificar o instrumento, mas não substitui a responsabilidade ética do pesquisador nem a avaliação oficial do Comitê de Ética em Pesquisa. O acesso está disponível em:
+        </p>
+        <p>
+          <a href="https://bit.ly/gpt-fcd" target="_blank" rel="noopener noreferrer">https://bit.ly/gpt-fcd</a>
+        </p>
+        <p>
+          Recomenda se sempre evitar o envio de dados pessoais ou identificáveis de participantes ao utilizar essa ferramenta, mantendo a descrição dos instrumentos em formato anonimizado.
+        </p>
+      </section>
+
+      <section id="sec-11">
+        <h2>11. Considerações finais</h2>
+        <p>
+          A construção de um formulário de coleta de dados é uma etapa central do processo de pesquisa em seres humanos, porque representa o ponto de contato mais visível entre o projeto e a vida concreta dos participantes. Um instrumento bem elaborado não é apenas tecnicamente eficiente, mas expressa respeito, responsabilidade e compromisso ético. Cada decisão de perguntar ou não perguntar, de detalhar ou simplificar, de tornar obrigatória ou opcional uma resposta, comunica ao participante como ele é visto pelo pesquisador.
+        </p>
+        <p>
+          Seguir as recomendações apresentadas fortalece a autonomia do participante, minimiza riscos, reduz desconfortos e garante que cada pergunta seja justificada, clara e necessária. Ao mesmo tempo, um formulário bem estruturado produz dados mais confiáveis, reduz vieses e aumenta a robustez científica do estudo. Em um cenário em que a sociedade exige transparência, proteção de dados e respeito às diferenças, formular instrumentos seguros não é apenas cumprir normas, mas um gesto consciente de cuidado.
+        </p>
+        <p>
+          Ao respeitar esses princípios, o pesquisador contribui para uma ciência mais humana e socialmente legítima. A qualidade do instrumento reflete a qualidade da relação entre pesquisa e sociedade, e ajuda a construir um ambiente em que os participantes se sintam protegidos, valorizados e dispostos a colaborar com a produção de conhecimento que realmente importa.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Ebook de apoio à construção de formulários de coleta de dados em pesquisas com seres humanos, uso acadêmico e regulatório.  
+      Disciplina de Pesquisa em Ciências da Saúde, UNCISAL, 2025.  
+      Elaboração e curadoria de conteúdo, Aldemar Araujo e equipe de pesquisa.  
+      Uso educacional, não comercial. Recomenda se citação da fonte ao utilizar trechos deste material.
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      const btn = document.getElementById("toggle-theme");
+      const stored = window.localStorage.getItem("theme");
+
+      if (stored === "dark") {
+        document.body.classList.add("dark");
+        btn.textContent = "Desativar";
+      }
+
+      btn.addEventListener("click", function() {
+        const isDark = document.body.classList.toggle("dark");
+        btn.textContent = isDark ? "Desativar" : "Ativar";
+        window.localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    })();
+  </script>
+</body>
+</html>
