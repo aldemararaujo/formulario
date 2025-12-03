@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Tabela de Dados Individuais, a matriz da pesquisa | FiatLux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Capítulo do FiatLux sobre a tabela de dados individuais, a matriz central da pesquisa, com foco em padronização, segurança e qualidade dos dados." />
+
+  <!-- Tipografias semelhantes ao ebook -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --text-main: #1f2933;
+      --text-soft: #52606d;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --code-bg: #111827;
+    }
+
+    body.dark-mode {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.2);
+      --border-soft: #1f2937;
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7);
+      --code-bg: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px 12px;
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe, #f4f5f7);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shell {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+    }
+
+    body.dark-mode .shell {
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.9);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px 26px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 16px 60px 16px;
+      }
+      .card {
+        padding: 32px 36px 40px 36px;
+      }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #dbeafe, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    body.dark-mode .brand-logo {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #1d4ed8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148, 163, 184, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #020617;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-toggle span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .meta strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .toc {
+      margin: 16px 0 24px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-soft);
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .toc li {
+      margin: 3px 0;
+    }
+
+    .toc a {
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.9);
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 19px;
+      margin: 24px 0 8px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 18px 0 6px 0;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 6px 0 8px 0;
+      color: var(--text-main);
+    }
+
+    ul, ol {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding-left: 20px;
+      margin: 4px 0 8px 0;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .callout {
+      margin: 16px 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .callout strong {
+      color: var(--accent);
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="card">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-logo">FX</div>
+            <div class="brand-text">
+              <div class="brand-title">FiatLux, Pesquisa</div>
+              <div class="brand-subtitle">Tabela de dados individuais</div>
+            </div>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <span>Modo escuro</span>
+          </button>
+        </header>
+
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Capítulo FiatLux</span>
+        </div>
+
+        <h1>Tabela de Dados Individuais, a matriz da pesquisa</h1>
+
+        <div class="meta">
+          <strong>Contexto</strong> este capítulo descreve a tabela de dados individuais como a matriz central da pesquisa quantitativa, destacando organização, padronização, segurança e importância na análise estatística.
+        </div>
+
+        <!-- Sumário interno -->
+        <section class="toc">
+          <div class="toc-title">Estrutura deste capítulo</div>
+          <ul>
+            <li><a href="#definicao">1. Definição</a></li>
+            <li><a href="#importancia">2. Importância</a></li>
+            <li><a href="#quem">3. Quem deve fazer</a></li>
+            <li><a href="#quando">4. Quando fazer</a></li>
+            <li><a href="#onde">5. Onde fazer</a></li>
+            <li><a href="#como">6. Como fazer</a></li>
+            <li><a href="#consideracoes">7. Considerações finais</a></li>
+          </ul>
+        </section>
+
+        <section id="definicao">
+          <h2>1. Definição</h2>
+          <p>
+            A tabela de dados individuais é a matriz central da pesquisa quantitativa. Nela, cada linha corresponde a um participante, sujeito, prontuário, entrevista ou unidade de análise. Cada coluna corresponde a uma variável coletada, por exemplo, idade, sexo, pressão arterial, escore de um questionário ou desfecho clínico.
+          </p>
+          <p>
+            Essa tabela deve conter somente informações padronizadas, idealmente na forma de letras ou números codificados, sem textos longos, abreviações pessoais ou comentários soltos. As unidades de medida e as categorias de resposta devem estar claramente indicadas no cabeçalho de cada coluna.
+          </p>
+          <p>
+            A tabela de dados individuais é a origem de todos os resultados numéricos da pesquisa. É a partir dela que serão derivados todos os cálculos, tabelas, gráficos, testes estatísticos e figuras que aparecerão no relatório final, no TCC, na dissertação, na tese ou no artigo científico.
+          </p>
+        </section>
+
+        <section id="importancia">
+          <h2>2. Importância</h2>
+          <p>
+            A tabela de dados individuais é o ponto de encontro entre o mundo real e a análise estatística. Sem uma tabela bem construída, a melhor revisão de literatura e o melhor projeto se perdem em dados confusos, incompletos ou inutilizáveis.
+          </p>
+          <p>
+            A importância da tabela de dados individuais pode ser resumida em alguns pontos.
+          </p>
+          <ul>
+            <li>
+              <strong>Organização</strong>, permite enxergar, em um único lugar, todos os participantes e todas as variáveis coletadas, com clareza e ordem.
+            </li>
+            <li>
+              <strong>Padronização</strong>, garante que cada variável seja registrada sempre do mesmo jeito, por exemplo, um código numérico para cada categoria de resposta. Isso reduz erros na análise.
+            </li>
+            <li>
+              <strong>Rastreabilidade</strong>, facilita conferir, corrigir e auditar os dados sempre que necessário, inclusive em respostas ao Comitê de Ética ou a revisores de artigos.
+            </li>
+            <li>
+              <strong>Reprodutibilidade</strong>, uma tabela bem organizada permite que outro pesquisador, ou o próprio pesquisador no futuro, replique as análises e compreenda exatamente como os resultados foram obtidos.
+            </li>
+            <li>
+              <strong>Segurança e integridade</strong>, a existência de cópias de segurança e controles de acesso garante que os dados não sejam perdidos nem alterados de forma não autorizada.
+            </li>
+          </ul>
+          <p>
+            Em resumo, uma boa tabela de dados individuais é a base silenciosa de toda a qualidade metodológica e estatística do estudo.
+          </p>
+        </section>
+
+        <section id="quem">
+          <h2>3. Quem deve fazer</h2>
+          <p>
+            A construção da tabela de dados individuais é responsabilidade do pesquisador principal, em conjunto com o orientador e, quando houver, com o estatístico da equipe. Mesmo que a coleta seja feita por vários entrevistadores ou pesquisadores auxiliares, o desenho da tabela, os nomes das variáveis e a forma de codificação devem ser definidos centralmente.
+          </p>
+          <p>
+            Cabe ao pesquisador principal:
+          </p>
+          <ul>
+            <li>definir quais variáveis estarão na tabela, de acordo com os objetivos do estudo;</li>
+            <li>padronizar a forma de registro de cada variável;</li>
+            <li>treinar a equipe para preencher os dados sempre do mesmo modo;</li>
+            <li>revisar periodicamente a consistência das informações registradas.</li>
+          </ul>
+          <p>
+            Se houver apoio de profissionais de tecnologia ou de estatística, eles podem sugerir melhorias de estrutura, como tipos de campos, codificações e formatos de arquivo. No entanto, a responsabilidade sobre o conteúdo e a coerência com o protocolo permanece com o pesquisador.
+          </p>
+        </section>
+
+        <section id="quando">
+          <h2>4. Quando fazer</h2>
+          <p>
+            A tabela de dados individuais não deve ser improvisada depois que a coleta já começou. Ela deve ser planejada e estruturada com antecedência, de preferência antes da submissão do projeto ao Comitê de Ética em Pesquisa.
+          </p>
+          <p>
+            A sequência ideal é:
+          </p>
+          <ol>
+            <li>definir a pergunta de pesquisa, a hipótese e os objetivos;</li>
+            <li>planejar os instrumentos e o formulário de coleta, presencial ou online;</li>
+            <li>a partir desses instrumentos, desenhar a tabela de dados individuais, com todas as variáveis necessárias;</li>
+            <li>somente então iniciar a coleta, já sabendo exatamente em que formato os dados serão lançados.</li>
+          </ol>
+          <p>
+            Durante a coleta, a tabela pode ser ajustada em detalhes, desde que as mudanças não contrariem o projeto aprovado nem prejudiquem a consistência dos dados. Mudanças estruturais grandes devem ser avaliadas com muito cuidado.
+          </p>
+        </section>
+
+        <section id="onde">
+          <h2>5. Onde fazer</h2>
+          <p>
+            A tabela de dados individuais pode ser construída em diferentes ferramentas, desde que ofereçam segurança, organização e possibilidade de exportação para análise estatística. Alguns cenários comuns são:
+          </p>
+          <ul>
+            <li>
+              <strong>Planilhas eletrônicas</strong>, como Excel ou Google Sheets, úteis para pesquisas pequenas e médias, com número limitado de variáveis e de participantes.
+            </li>
+            <li>
+              <strong>Plataformas específicas de pesquisa</strong>, como sistemas de captura eletrônica de dados, indicadas para estudos maiores ou multicêntricos.
+            </li>
+            <li>
+              <strong>Bancos de dados estruturados</strong>, como arquivos no formato CSV ou bases relacionais integradas a softwares estatísticos.
+            </li>
+          </ul>
+          <p>
+            Independentemente da ferramenta, algumas regras são essenciais.
+          </p>
+          <ul>
+            <li>a tabela matriz deve ser guardada em ambiente seguro, com acesso restrito;</li>
+            <li>deve existir pelo menos um backup, em local diferente, atualizado regularmente;</li>
+            <li>o armazenamento deve respeitar as normas de proteção de dados pessoais e sensíveis, reduzindo ao mínimo a possibilidade de identificação direta dos participantes.</li>
+          </ul>
+          <p>
+            Quando a pesquisa contém dados identificáveis, recomenda se separar a lista de identificação da tabela analítica, usando um código único para cada participante e mantendo a chave de identificação em arquivo separado e protegido.
+          </p>
+        </section>
+
+        <section id="como">
+          <h2>6. Como fazer</h2>
+          <p>
+            A construção da tabela de dados individuais exige disciplina e padronização. Alguns princípios práticos ajudam a garantir qualidade.
+          </p>
+
+          <h3>6.1 Estrutura básica</h3>
+          <ul>
+            <li>
+              <strong>Cada linha representa um participante</strong>, um identificador único deve ser criado para cada participante ou unidade de análise, por exemplo, P001, P002, P003. Esse identificador deve ser estável ao longo de todo o estudo.
+            </li>
+            <li>
+              <strong>Cada coluna representa uma variável</strong>, as colunas são as características medidas, por exemplo, idade, sexo, pressão sistólica, escore de dor, presença de comorbidade, desfecho clínico.
+            </li>
+            <li>
+              <strong>Cabeçalho claro e padronizado</strong>, o cabeçalho deve conter o nome da variável e, quando aplicável, a unidade de medida, por exemplo, idade_anos, PAS_mmHg, glicemia_mg_dl. Isso evita dúvidas futuras sobre o significado dos números.
+            </li>
+          </ul>
+
+          <h3>6.2 Conteúdo padronizado</h3>
+          <ul>
+            <li>
+              <strong>Somente letras ou números codificados</strong>, a tabela deve conter apenas valores simples, preferencialmente numéricos, com codificações definidas em um dicionário de dados, por exemplo, um código para sim e um código para não, ou um código para cada categoria.
+            </li>
+            <li>
+              <strong>Sem textos longos nas células</strong>, comentários extensos não devem ficar espalhados pela matriz. Quando necessário, pode haver uma coluna específica de observações padronizadas ou um documento separado de anotações.
+            </li>
+            <li>
+              <strong>Evitar fórmulas complexas na matriz original</strong>, a tabela matriz deve guardar os dados brutos ou padronizados. Cálculos derivados, como médias, índices compostos ou categorias calculadas, devem ser feitos preferencialmente em cópias ou em scripts de análise, preservando o dado original.
+            </li>
+          </ul>
+
+          <h3>6.3 Dicionário de dados</h3>
+          <p>
+            Além da tabela, é fundamental manter um dicionário de dados, um documento que descreve, para cada coluna:
+          </p>
+          <ul>
+            <li>nome da variável;</li>
+            <li>definição em linguagem comum;</li>
+            <li>unidade de medida, quando houver;</li>
+            <li>forma de codificação;</li>
+            <li>valores possíveis e o que cada código significa.</li>
+          </ul>
+          <p>
+            Esse dicionário facilita o entendimento da tabela por outros membros da equipe, por revisores e pelo próprio pesquisador no futuro, quando precisar reabrir o banco de dados.
+          </p>
+
+          <h3>6.4 Backup e segurança</h3>
+          <p>
+            Como a tabela de dados individuais é a matriz da pesquisa, sua perda pode inviabilizar completamente o estudo. Por isso, algumas medidas são indispensáveis.
+          </p>
+          <ul>
+            <li>
+              <strong>Backup periódico</strong>, manter cópias de segurança em locais diferentes, por exemplo, um backup em nuvem e um backup em dispositivo físico criptografado.
+            </li>
+            <li>
+              <strong>Controle de versões</strong>, registrar a data de atualização de cada arquivo, evitando múltiplas versões com nomes confusos.
+            </li>
+            <li>
+              <strong>Controle de acesso</strong>, restringir o acesso à tabela somente à equipe autorizada, usando senhas e mecanismos de autenticação sempre que possível.
+            </li>
+            <li>
+              <strong>Proteção de dados pessoais</strong>, evitar armazenar diretamente na tabela dados como nome completo ou número de documento. Utilizar códigos e manter a lista de identificação em arquivo separado, com proteção adicional.
+            </li>
+          </ul>
+          <p>
+            Essas medidas auxiliam na conformidade com a legislação de proteção de dados e com as boas práticas éticas recomendadas pelos Comitês de Ética em Pesquisa.
+          </p>
+        </section>
+
+        <section id="consideracoes">
+          <h2>7. Considerações finais</h2>
+          <p>
+            A tabela de dados individuais é o coração numérico da pesquisa. Ela traduz para números e códigos aquilo que foi cuidadosamente planejado em termos de pergunta de pesquisa, objetivos, instrumentos e procedimentos.
+          </p>
+          <p>
+            Quando bem construída, ela:
+          </p>
+          <ul>
+            <li>facilita a análise estatística;</li>
+            <li>reduz erros e inconsistências;</li>
+            <li>comprova a qualidade metodológica do estudo;</li>
+            <li>permite auditoria, conferência e replicação;</li>
+            <li>protege o pesquisador e o participante.</li>
+          </ul>
+          <p>
+            Quando mal planejada, pode gerar retrabalho, perda de dados, dificuldades na análise e, em casos extremos, inviabilizar o uso científico da pesquisa realizada.
+          </p>
+          <p>
+            Investir tempo na construção correta da tabela matriz, com linhas bem definidas, colunas padronizadas, cabeçalhos com unidades de medida, dicionário de dados e rotinas de backup e segurança, não é um detalhe técnico secundário. É uma etapa estratégica do planejamento, da execução e da validação da pesquisa.
+          </p>
+        </section>
+
+        <footer class="footer">
+          <div>
+            Capítulo integrante do projeto FiatLux, pesquisa em ciências da saúde, versão educativa para estudantes e pesquisadores iniciantes.
+          </div>
+          <div>
+            Conteúdo em desenvolvimento contínuo, com licença Creative Commons, atribuição, uso não comercial, compartilhamento pela mesma licença.
+          </div>
+          <div>
+            Autor, Aldemar Araujo Castro.
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          body.classList.add("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo claro";
+        } else {
+          body.classList.remove("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo escuro";
+        }
+      }
+
+      const storedTheme = localStorage.getItem("fiatlux-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme("light");
+      }
+
+      toggleBtn.addEventListener("click", function () {
+        const isDark = body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("fiatlux-theme", newTheme);
+      });
+    })();
+  </script>
+</body>
+</html>
