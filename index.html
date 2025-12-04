@@ -1,151 +1,492 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Teste de Instrumentos e de Procedimentos na Pesquisa em Ciências da Saúde</title>
+  <meta charset="utf-8" />
+  <title>FiatLux, Ebook de Pesquisa com Seres Humanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Índice do Ebook FiatLux sobre pesquisa com seres humanos, reunindo capítulos sobre plano de intenção, formulários, tabela de dados, riscos, benefícios, TCLE e autorização institucional." />
 
-<style>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
-/* Fonte, reset e comportamento básico */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    transition: background-color 0.4s, color 0.4s;
-}
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --text-main: #1f2933;
+      --text-soft: #52606d;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
 
-/* Paleta clara e escura no padrão do ebook */
-:root {
-    --bg: #ffffff;
-    --text: #111111;
-    --card: #f5f5f5;
-    --border: #dddddd;
-    --link: #0050c8;
-}
+    body.dark-mode {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.2);
+      --border-soft: #1f2937;
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7);
+    }
 
-.dark-mode {
-    --bg: #111111;
-    --text: #ffffff;
-    --card: #1b1b1b;
-    --border: #333333;
-    --link: #4da3ff;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* Container principal */
-.container {
-    max-width: 820px;
-    margin: auto;
-    padding: 40px 20px;
-}
+    body {
+      margin: 0;
+      padding: 24px 12px 40px 12px;
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe, #f4f5f7);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-/* Título central */
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
+    body.dark-mode {
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
 
-/* Subtítulo */
-.subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-/* Lista de capítulos */
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 20px;
-    transition: 0.3s;
-}
+    .shell {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+    }
 
-.card:hover {
-    transform: translateY(-3px);
-}
+    body.dark-mode .shell {
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.9);
+    }
 
-/* Links */
-.card a {
-    text-decoration: none;
-    color: var(--link);
-    font-weight: 700;
-    font-size: 1.1rem;
-}
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px 26px;
+    }
 
-/* Botão de modo claro/escuro */
-.toggle-btn {
-    display: block;
-    margin: auto;
-    margin-bottom: 30px;
-    padding: 8px 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 16px 60px 16px;
+      }
+      .card {
+        padding: 32px 36px 40px 36px;
+      }
+    }
 
-/* Rodapé */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
 
-</style>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #dbeafe, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    body.dark-mode .brand-logo {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #1d4ed8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148, 163, 184, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #020617;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-toggle span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .meta strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hero {
+      margin: 14px 0 20px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .hero-caption {
+      font-size: 12px;
+      color: var(--text-soft);
+      padding: 8px 12px 10px 12px;
+    }
+
+    .chapters {
+      margin-top: 10px;
+    }
+
+    .chapters-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 720px) {
+      .chapters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .chapter-card {
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      padding: 12px 14px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      height: 100%;
+    }
+
+    .chapter-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+    }
+
+    .chapter-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .chapter-desc {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .chapter-link {
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .chapter-link a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(37, 99, 235, 0.7);
+    }
+
+    .chapter-link a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <div class="shell">
+      <div class="card">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-logo">FX</div>
+            <div class="brand-text">
+              <div class="brand-title">FiatLux, Pesquisa</div>
+              <div class="brand-subtitle">Ebook, pesquisa com seres humanos</div>
+            </div>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <span>Modo escuro</span>
+          </button>
+        </header>
 
-<div class="container">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Índice geral</span>
+        </div>
 
-<button class="toggle-btn" onclick="toggleDarkMode()">modo claro ou escuro</button>
+        <h1>Ebook FiatLux, pesquisa com seres humanos</h1>
 
-<h1>Pesquisa em Ciências da Saúde</h1>
-<div class="subtitle">Guia Estruturado dos Itens do Teste de Instrumentos e de Procedimentos no Planejamento da Pesquisa</div>
+        <div class="meta">
+          <strong>Objetivo</strong>, reunir em um único lugar os capítulos sobre plano de intenção, formulários, tabela de dados, riscos, benefícios, TCLE e autorização institucional, orientando estudantes e pesquisadores na prática ética da pesquisa.
+        </div>
 
-<!-- Lista de capítulos -->
-<div class="card">
-    <a href="https://aldemararaujo.github.io/ebook/tcle.html">1. Termo de Consentimento Livre e Esclarecido (TCLE)</a>
-</div>
+        <div class="hero">
+          <img src="https://usinadepesquisa.com/fiatlux/wp-content/uploads/2025/04/IA-na-pesquisa-academica.png" alt="FiatLux, inteligência artificial na pesquisa acadêmica" />
+          <div class="hero-caption">
+            Ilustração do FiatLux em pesquisa acadêmica com apoio de inteligência artificial, uso educacional, não comercial.
+          </div>
+        </div>
 
-<div class="card">
-    <a href="https://aldemararaujo.github.io/ebook/fcd.html">2. Formulário de Coleta de Dados</a>
-</div>
+        <section class="chapters">
+          <div class="chapters-title">Capítulos disponíveis</div>
+          <div class="chapters-grid">
 
-<div class="card">
-    <a href="https://aldemararaujo.github.io/ebook/tdi.html">3. Tabela de Dados Individuais</a>
-</div>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 1</div>
+              <h2 class="chapter-title">O Plano de Intenção como Ferramenta Estratégica</h2>
+              <p class="chapter-desc">
+                Apresenta o Plano de Intenção como primeiro produto intelectual da pesquisa, início do Teste de Instrumentos e Procedimentos e base do resumo estruturado do projeto, com foco em viabilidade e estratégia.
+              </p>
+              <div class="chapter-link">
+                <a href="plano-intencao.html">Abrir capítulo sobre Plano de Intenção</a>
+              </div>
+            </article>
 
-<div class="card">
-    <a href="https://aldemararaujo.github.io/ebook/risben.html">4. Riscos e Benefícios</a>
-</div>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 2</div>
+              <h2 class="chapter-title">Formulários de Coleta de Dados</h2>
+              <p class="chapter-desc">
+                Guia prático para construir instrumentos de coleta éticos, claros e proporcionais aos objetivos do estudo, alinhados ao Sistema CEP, Conep e à proteção de dados pessoais.
+              </p>
+              <div class="chapter-link">
+                <a href="formulario-coleta-dados.html">Abrir capítulo dos formulários</a>
+              </div>
+            </article>
 
-<div class="card">
-    <a href="https://aldemararaujo.github.io/ebook/autpes.html">5. Autorização para Realizar a Pesquisa</a>
-</div>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 3</div>
+              <h2 class="chapter-title">Tabela de Dados Individuais, a Matriz da Pesquisa</h2>
+              <p class="chapter-desc">
+                Discutem se a tabela em que cada linha representa um participante e cada coluna uma variável, com unidades no cabeçalho, dados padronizados e rotinas de backup e segurança da informação.
+              </p>
+              <div class="chapter-link">
+                <a href="tabela-dados-individuais.html">Abrir capítulo da tabela de dados</a>
+              </div>
+            </article>
 
-<footer>
-© 2025 Aldemar Araujo Castro<br> Licença CC BY-NC-SA 4.0
-</footer>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 4</div>
+              <h2 class="chapter-title">Riscos e Benefícios em Pesquisas com Seres Humanos</h2>
+              <p class="chapter-desc">
+                Discussão conceitual e prática sobre riscos, desconfortos, benefícios diretos e indiretos, com ênfase em como identificar, classificar e descrever esses elementos no projeto e no TCLE.
+              </p>
+              <div class="chapter-link">
+                <a href="index.html">Abrir capítulo de riscos e benefícios</a>
+              </div>
+            </article>
 
-</div>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 5</div>
+              <h2 class="chapter-title">Termo de Consentimento Livre e Esclarecido, TCLE</h2>
+              <p class="chapter-desc">
+                Aborda o TCLE como instrumento central de proteção da autonomia, descrevendo sua estrutura mínima, cuidados em pesquisas online e uso de ferramentas digitais para revisão antes do CEP.
+              </p>
+              <div class="chapter-link">
+                <a href="tcle.html">Abrir capítulo sobre TCLE</a>
+              </div>
+            </article>
 
-<script>
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-}
-</script>
+            <article class="chapter-card">
+              <div class="chapter-tag">Capítulo 6</div>
+              <h2 class="chapter-title">Autorização para Realizar a Pesquisa</h2>
+              <p class="chapter-desc">
+                Explica a necessidade de autorização da instituição, do setor e de equipes envolvidas, mostrando como esse tripé institucional protege participantes, serviços e pesquisadores, garantindo viabilidade real do estudo.
+              </p>
+              <div class="chapter-link">
+                <a href="autorizacao-pesquisa.html">Abrir capítulo sobre autorização institucional</a>
+              </div>
+            </article>
 
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div>
+            Ebook FiatLux, pesquisa em ciências da saúde, versão educativa para estudantes e pesquisadores iniciantes.
+          </div>
+          <div>
+            Conteúdo em desenvolvimento contínuo, licença Creative Commons, atribuição, uso não comercial, compartilhamento pela mesma licença.
+          </div>
+          <div>
+            Curadoria geral, Aldemar Araujo Castro. Mais conteúdos em
+            <a href="https://aldemararaujo.github.io/riscos-beneficios/" target="_blank" rel="noopener noreferrer">aldemararaujo.github.io</a>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          body.classList.add("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo claro";
+        } else {
+          body.classList.remove("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo escuro";
+        }
+      }
+
+      const storedTheme = localStorage.getItem("fiatlux-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme("light");
+      }
+
+      toggleBtn.addEventListener("click", function () {
+        const isDark = body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("fiatlux-theme", newTheme);
+      });
+    })();
+  </script>
 </body>
 </html>
-
