@@ -1,561 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <title>Ebook, Formulários de Coleta de Dados em Pesquisas com Seres Humanos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Guia prático para construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, alinhado às normas da CONEP, ao Sistema CEP, Conep e à LGPD." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ebook Teste de Instrumentos e de Procedimentos na Pesquisa em Ciências da Saúde</title>
 
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg-light: #ffffff;
-      --bg-page-light: #f7f7f9;
-      --text-light: #222222;
-      --muted-light: #555555;
-      --accent: #0055aa;
-      --accent-soft: #e4efff;
-      --border-soft-light: #dddddd;
+<style>
 
-      --bg-dark: #0f1115;
-      --bg-page-dark: #151821;
-      --text-dark: #f2f2f5;
-      --muted-dark: #b0b3c0;
-      --border-soft-dark: #333745;
-    }
+/* Fonte, reset e comportamento básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.4s, color 0.4s;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
+/* Paleta clara e escura no padrão do ebook */
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --card: #f5f5f5;
+    --border: #dddddd;
+    --link: #0050c8;
+}
 
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
+.dark-mode {
+    --bg: #111111;
+    --text: #ffffff;
+    --card: #1b1b1b;
+    --border: #333333;
+    --link: #4da3ff;
+}
 
-    .page {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 3rem 1rem;
-      background-color: var(--bg-page-light);
-    }
+/* Container principal */
+.container {
+    max-width: 820px;
+    margin: auto;
+    padding: 40px 20px;
+}
 
-    body.dark .page {
-      background-color: var(--bg-page-dark);
-    }
+/* Título central */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
 
-    header {
-      margin-bottom: 1.75rem;
-    }
+/* Subtítulo */
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
 
-    .theme-row {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 0.8rem;
-    }
+/* Lista de capítulos */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: 0.3s;
+}
 
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.5rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft-light);
-      background: rgba(255, 255, 255, 0.9);
-      cursor: pointer;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
+.card:hover {
+    transform: translateY(-3px);
+}
 
-    body.dark .theme-toggle {
-      border-color: var(--border-soft-dark);
-      background: rgba(15, 17, 21, 0.9);
-    }
+/* Links */
+.card a {
+    text-decoration: none;
+    color: var(--link);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
 
-    .theme-toggle-label {
-      font-weight: 500;
-    }
+/* Botão de modo claro/escuro */
+.toggle-btn {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
 
-    .theme-toggle-pill {
-      width: 34px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft-light);
-      display: inline-flex;
-      align-items: center;
-      padding: 1px;
-      box-sizing: border-box;
-      background: #e2e8f0;
-    }
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
 
-    body.dark .theme-toggle-pill {
-      border-color: var(--border-soft-dark);
-      background: #2a2f3a;
-    }
+</style>
 
-    .theme-toggle-thumb {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent);
-      transform: translateX(0);
-      transition: transform 0.18s ease;
-    }
-
-    body.dark .theme-toggle-thumb {
-      transform: translateX(14px);
-    }
-
-    .eyebrow {
-      font-size: 0.95rem;
-      color: var(--muted-light);
-      margin-bottom: 0.25rem;
-    }
-
-    body.dark .eyebrow {
-      color: var(--muted-dark);
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      margin: 0 0 0.7rem 0;
-    }
-
-    p {
-      margin: 0.4rem 0 0.7rem 0;
-    }
-
-    .separator {
-      border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      margin: 1rem 0;
-    }
-
-    body.dark .separator {
-      border-top-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .card {
-      border-radius: 0.75rem;
-      padding: 0.85rem 1rem;
-      margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border-soft-light);
-    }
-
-    body.dark .card {
-      background: rgba(15, 17, 21, 0.92);
-      border-color: var(--border-soft-dark);
-    }
-
-    .card-meta-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0.2rem 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .meta-grid span {
-      display: block;
-    }
-
-    .meta-detail {
-      font-size: 0.9rem;
-      color: var(--muted-light);
-      margin-top: 0.3rem;
-    }
-
-    body.dark .meta-detail {
-      color: var(--muted-dark);
-    }
-
-    .toc-card h2 {
-      margin: 0 0 0.4rem 0;
-      font-size: 1.1rem;
-    }
-
-    .toc-card ul {
-      margin: 0.25rem 0 0.1rem 0;
-      padding-left: 1.2rem;
-      font-size: 0.95rem;
-    }
-
-    .toc-card li {
-      margin: 0.15rem 0;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    body.dark a {
-      color: #7eb1ff;
-    }
-
-    h2 {
-      margin-top: 1.8rem;
-      margin-bottom: 0.6rem;
-      font-size: 1.35rem;
-    }
-
-    h3 {
-      margin-top: 1.2rem;
-      margin-bottom: 0.4rem;
-      font-size: 1.05rem;
-    }
-
-    ul {
-      padding-left: 1.25rem;
-      margin: 0.3rem 0 0.8rem 0;
-    }
-
-    li {
-      margin: 0.15rem 0;
-    }
-
-    em {
-      font-style: italic;
-    }
-
-    code {
-      font-family: "Fira Code", Consolas, "Courier New", monospace;
-      font-size: 0.9rem;
-      padding: 0.05rem 0.2rem;
-      border-radius: 3px;
-      background: #eceff4;
-    }
-
-    body.dark code {
-      background: #1f2430;
-    }
-
-    footer {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: var(--muted-light);
-    }
-
-    body.dark footer {
-      color: var(--muted-dark);
-    }
-
-    @media (min-width: 900px) {
-      .page {
-        padding: 2rem 0 3rem 0;
-      }
-    }
-  </style>
 </head>
+
 <body>
-  <div class="page">
-    <header>
-      <div class="theme-row">
-        <button id="toggle-theme" type="button" class="theme-toggle" aria-pressed="false">
-          <span class="theme-toggle-label">Modo escuro</span>
-          <span class="theme-toggle-pill" aria-hidden="true">
-            <span class="theme-toggle-thumb"></span>
-          </span>
-        </button>
-      </div>
 
-      <div class="eyebrow">Guia prático em instrumentos de coleta de dados</div>
-      <h1>Formulários de Coleta de Dados em Pesquisas com Seres Humanos</h1>
-      <p>
-        Ebook é orientado às normas brasileiras para apoiar a construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, com foco em autonomia, sigilo, privacidade e proteção de dados.
-      </p>
+<div class="container">
 
-      <hr class="separator" />
+<button class="toggle-btn" onclick="toggleDarkMode()">Alternar modo claro e escuro</button>
 
-      <div class="card">
-        <div class="card-meta-title">Informações gerais</div>
-        <div class="meta-grid">
-          <span>Tempo de leitura, 18 minutos</span>
-          <span>Quantidade de palavras, aproximadamente 3.500</span>
-          <span>Criação, 03/12/2025</span>
-          <span>Atualização, 03/12/2025</span>
-        </div>
-        <div class="meta-detail">
-          Baseado nas Resoluções, CNS 466/2012 e 510/2016.  
-          Foco em Sistema CEP, Conep. Uso acadêmico e regulatório.
-        </div>
-      </div>
+<h1>Ebook <br>Pesquisa em Ciências da Saúde</h1>
+<div class="subtitle">Guia Estruturado dos Itens do Teste de Instrumentos e de Procedimentos no Planejamento da Pesquisa</div>
 
-      <div class="card toc-card">
-        <h2 id="indice">Índice</h2>
-        <ul>
-          <li><a href="#sec-1">1. Para que servem os Formulários de Coleta de Dados</a></li>
-          <li><a href="#sec-2">2. Princípios éticos que orientam a elaboração do instrumento</a></li>
-          <li><a href="#sec-3">3. Requisitos obrigatórios para qualquer Formulário de Coleta de Dados</a></li>
-          <li><a href="#sec-4">4. Como estruturar um Formulário de Coleta de Dados</a></li>
-          <li><a href="#sec-5">5. Erros frequentes que geram pendências no CEP</a></li>
-          <li><a href="#sec-6">6. Como analisar o instrumento antes de enviar ao CEP</a></li>
-          <li><a href="#sec-7">7. Perguntas que exigem aviso de sensibilidade</a></li>
-          <li><a href="#sec-8">8. Proteção de dados e LGPD</a></li>
-          <li><a href="#sec-9">9. Responsabilidades do pesquisador durante a aplicação</a></li>
-          <li><a href="#sec-10">10. Formulário de coleta de dados online</a></li>
-          <li><a href="#sec-11">11. GPT Personalizado</a></li>
-          <li><a href="#sec-12">12. Considerações finais</a></li>
-        </ul>
-      </div>
-    </header>
+<!-- Lista de capítulos -->
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/tcle.html">1. Termo de Consentimento Livre e Esclarecido (TCLE)</a>
+</div>
 
-    <main>
-      <section id="sec-1">
-        <h2>1. Para que servem os Formulários de Coleta de Dados</h2>
-        <p>
-          Os formulários de coleta de dados são instrumentos essenciais para registrar, de forma padronizada, as informações fornecidas pelos participantes ou observadas pelo pesquisador. Eles reduzem variações entre entrevistadores, organizam o fluxo das perguntas e fortalecem a consistência metodológica da pesquisa. Um bom formulário melhora a comparabilidade entre participantes, facilita a análise estatística e reduz erros de registro.
-        </p>
-        <p>
-          No entanto, a importância desses instrumentos vai além da técnica. Um formulário mal planejado pode expor participantes, gerar constrangimento, induzir respostas ou violar privacidade. Cada pergunta representa uma interação concreta entre pesquisa e ser humano. Por isso, a construção do instrumento é um ato de responsabilidade ética, ligado diretamente à proteção da dignidade, da integridade e dos direitos dos participantes, e não apenas uma exigência burocrática do sistema CEP, Conep.
-        </p>
-      </section>
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/fcd.html">2. Formulário de Coleta de Dados</a>
+</div>
 
-      <section id="sec-2">
-        <h2>2. Princípios éticos que orientam a elaboração do instrumento</h2>
-        <p>
-          A elaboração de um formulário deve ser guiada por princípios éticos que materializam, na prática, os fundamentos da bioética e das resoluções brasileiras de ética em pesquisa.
-        </p>
-        <h3>2.1. Autonomia</h3>
-        <p>
-          O participante deve sentir que está no controle de sua participação, podendo responder, pular perguntas ou interromper a coleta a qualquer momento. A inclusão de opções de recusa e a linguagem clara que reforça a voluntariedade traduzem esse princípio. A autonomia não é apenas uma ideia abstrata, mas se concretiza em elementos do instrumento, como alternativas de não resposta e lembretes explícitos de liberdade.
-        </p>
-        <h3>2.2. Proteção</h3>
-        <p>
-          Perguntas podem gerar riscos emocionais, sociais e de privacidade, especialmente quando abordam temas sensíveis, como saúde, renda, violência ou discriminação. Minimizar esses riscos é essencial para preservar o bem estar do participante e evitar danos que podem surgir mesmo em pesquisas classificadas como de risco mínimo. A forma, a ordem e a profundidade das perguntas são escolhas que influenciam diretamente esse nível de proteção.
-        </p>
-        <h3>2.3. Proporcionalidade e minimização da carga</h3>
-        <p>
-          Um formulário enxuto, bem organizado e adequado ao perfil do público reduz fadiga, melhora a qualidade das respostas e demonstra respeito ao tempo e à energia dos participantes. A quantidade e o tipo de perguntas precisam ser proporcionais aos objetivos do estudo. Coletar mais dados do que o necessário aumenta riscos, gera sobrecarga e pode violar princípios éticos e a própria legislação de proteção de dados.
-        </p>
-      </section>
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/tdi.html">3. Tabela de Dados Individuais</a>
+</div>
 
-      <section id="sec-3">
-        <h2>3. Requisitos obrigatórios para qualquer Formulário de Coleta de Dados</h2>
-        <p>
-          Alguns requisitos são indispensáveis para que um formulário seja eticamente aceitável e alinhado às normas brasileiras. Eles não existem apenas para atender resoluções, mas para proteger efetivamente a autonomia, o sigilo e a privacidade dos participantes.
-        </p>
-        <h3>3.1. Evitar a coleta de dados identificáveis sem necessidade</h3>
-        <p>
-          Nome, endereço, CPF, RG, telefone, e mail ou qualquer dado que permita reconhecer diretamente a pessoa não devem ser incluídos, salvo quando forem estritamente necessários para o objetivo da pesquisa e estiverem detalhadamente justificados no protocolo. A ausência desses dados reduz o risco de exposição, simplifica medidas de segurança e diminui o impacto de possíveis vazamentos.
-        </p>
-        <h3>3.2. Incluir a opção “Não desejo responder” em todas as perguntas fechadas</h3>
-        <p>
-          Em perguntas fechadas, a presença da alternativa “Não desejo responder” é a forma mais concreta de garantir liberdade real de recusa. Sem essa opção, o participante pode sentir que é obrigado a responder ou que sua recusa será mal vista. Essa pequena escolha de design do instrumento está diretamente ligada à proteção da autonomia e à redução da coerção implícita.
-        </p>
-        <h3>3.3. Inserir a frase obrigatória em perguntas abertas</h3>
-        <p>
-          Nas perguntas abertas, deve constar, no cabeçalho, a frase:
-        </p>
-        <p>
-          <em>Sua participação é voluntária. Você pode deixar de responder qualquer pergunta ou interromper a entrevista a qualquer momento, sem qualquer prejuízo.</em>
-        </p>
-        <p>
-          Perguntas abertas exigem maior elaboração, podem despertar lembranças sensíveis e aumentar o risco de exposição. O lembrete explícito da liberdade de recusa reduz ansiedade, protege o participante e reforça que ele não é obrigado a revelar algo que o deixe desconfortável.
-        </p>
-        <h3>3.4. Evitar excesso de perguntas</h3>
-        <p>
-          Instrumentos excessivamente longos causam fadiga, aumentam a chance de respostas superficiais ou apressadas e podem levar à desistência. Perguntas supérfluas não agregam valor científico relevante e apenas ampliam o risco ético e operacional. A seleção cuidadosa do que é realmente necessário é uma forma de respeito ao participante.
-        </p>
-        <h3>3.5. Evitar linguagem técnica, jurídica ou pouco acessível</h3>
-        <p>
-          Expressões técnicas ou jurídicas pouco familiares ao público alvo podem gerar incompreensão, constrangimento ou respostas equivocadas. A linguagem do formulário deve ser clara, direta e compatível com o nível de escolaridade e o contexto sociocultural dos participantes. Explicar termos quando indispensáveis é tão importante quanto simplificar sempre que possível.
-        </p>
-        <h3>3.6. Evitar perguntas indutoras ou enviesadas</h3>
-        <p>
-          Perguntas formuladas de maneira a sugerir uma resposta, ou que transmitam julgamento de valor, prejudicam tanto a ética quanto a qualidade científica. Elas pressionam os participantes a responderem o que imaginam ser desejado pela equipe de pesquisa. A neutralidade das questões é uma forma de respeito à liberdade de opinião e, ao mesmo tempo, um requisito metodológico para produzir dados confiáveis.
-        </p>
-      </section>
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/risben.html">4. Riscos e Benefícios</a>
+</div>
 
-      <section id="sec-4">
-        <h2>4. Como estruturar um Formulário de Coleta de Dados</h2>
-        <p>
-          Uma boa estrutura reduz ansiedade, melhora a compreensão e organiza o raciocínio do participante. A seguir, uma proposta de organização em blocos.
-        </p>
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/autpes.html">5. Autorização para Realizar a Pesquisa</a>
+</div>
 
-        <h3>4.1. Cabeçalho de abertura</h3>
-        <p>
-          O cabeçalho inicial é o momento de estabelecer confiança. Nele, o pesquisador reforça que a pesquisa foi aprovada por um Comitê de Ética, que a participação é voluntária e que não haverá qualquer prejuízo pela recusa ou pela interrupção da entrevista. Esse trecho ajuda a reduzir tensão, esclarece o contexto e reafirma a centralidade da autonomia antes da primeira pergunta ser feita.
-        </p>
+<footer>
+© 2025 Aldemar Araujo Castro<br> Licença CC BY-NC-SA 4.0
+</footer>
 
-        <h3>4.2. Critérios de elegibilidade</h3>
-        <p>
-          Em seguida, é recomendado incluir perguntas simples que confirmem se a pessoa atende aos critérios de inclusão da pesquisa, como idade mínima, leitura e concordância com o Termo de Consentimento ou presença de determinada condição clínica, quando aplicável. Essas questões devem ser objetivas, com respostas claras e, sempre, com a opção “Não desejo responder”, mesmo nos casos em que a elegibilidade dependa da resposta.
-        </p>
+</div>
 
-        <h3>4.3. Caracterização do participante</h3>
-        <p>
-          A caracterização deve ser feita com categorias amplas, suficientes para fins de análise estatística, mas sem expor dados pessoais desnecessários. Em vez de perguntar a idade exata, pode se usar faixas etárias. Em vez da profissão específica, grupos ocupacionais. O objetivo é equilibrar a necessidade de informação com a proteção da privacidade, reduzindo o risco de identificação individual ou de grupos pequenos.
-        </p>
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
 
-        <h3>4.4. Bloco temático principal</h3>
-        <p>
-          O bloco temático principal reúne as perguntas diretamente ligadas aos objetivos da pesquisa. Aqui, a clareza e a coerência são fundamentais. As questões devem ser formuladas em linguagem acessível, evitando ambiguidade e duplicidade. A sequência das perguntas deve favorecer uma progressão lógica, começando por temas mais gerais e avançando, quando necessário, para pontos mais específicos, sempre com respeito ao conforto do participante.
-        </p>
-
-        <h3>4.5. Pergunta aberta opcional</h3>
-        <p>
-          Perguntas abertas podem ser úteis para captar percepções, experiências pessoais e comentários livres. Contudo, devem ser usadas com parcimônia. Antes desse tipo de questão, é essencial incluir o lembrete de que a resposta é opcional e que o participante pode deixar o campo em branco se preferir. Isso é especialmente importante quando o tema é sensível ou potencialmente desencadeador de sofrimento.
-        </p>
-      </section>
-
-      <section id="sec-5">
-        <h2>5. Erros frequentes que geram pendências no CEP</h2>
-        <p>
-          As pendências emitidas pelos Comitês de Ética em Pesquisa refletem problemas práticos que podem ser evitados na etapa de elaboração do formulário. Os erros a seguir são recorrentes.
-        </p>
-        <ul>
-          <li>Coleta de dados pessoais identificáveis sem justificativa clara ou proporcional ao objetivo do estudo.</li>
-          <li>Ausência da opção “Não desejo responder” em perguntas fechadas, o que fragiliza a garantia de autonomia.</li>
-          <li>Inclusão de perguntas sensíveis sem aviso prévio ou sem medidas adequadas de acolhimento e proteção.</li>
-          <li>Formulários excessivamente longos e complexos, que não correspondem à relevância do problema estudado.</li>
-          <li>Linguagem técnica, burocrática ou inadequada ao perfil sociocultural do público alvo.</li>
-          <li>Questões que expõem crenças religiosas, posicionamentos políticos, condição de saúde ou renda sem necessidade metodológica bem justificada.</li>
-        </ul>
-        <p>
-          Identificar e corrigir esses problemas antes da submissão reduz o tempo de tramitação, diminui retrabalho e, principalmente, qualifica a experiência do participante diante da pesquisa.
-        </p>
-      </section>
-
-      <section id="sec-6">
-        <h2>6. Como analisar o instrumento antes de enviar ao CEP</h2>
-        <p>
-          Um checklist estruturado ajuda o pesquisador a revisar o formulário com olhar crítico, aproximando sua prática das exigências éticas e regulatórias.
-        </p>
-        <ul>
-          <li>O formulário solicita algum dado identificável sem que isso seja necessário para os objetivos do estudo?</li>
-          <li>Todas as perguntas fechadas incluem a alternativa “Não desejo responder”?</li>
-          <li>As perguntas abertas trazem a frase padronizada que reforça a voluntariedade e a possibilidade de interromper a entrevista?</li>
-          <li>A linguagem é compatível com o nível de compreensão do público alvo, incluindo pessoas com menor escolaridade formal?</li>
-          <li>A quantidade de perguntas é proporcional ao problema investigado, sem excesso de itens supérfluos?</li>
-          <li>Existe coerência entre as perguntas, os riscos descritos, os benefícios esperados e os procedimentos previstos no protocolo?</li>
-        </ul>
-        <p>
-          Esse tipo de análise contribui para que o instrumento seja, ao mesmo tempo, cientificamente robusto e eticamente cuidadoso, reduzindo a distância entre teoria e prática em ética em pesquisa.
-        </p>
-      </section>
-
-      <section id="sec-7">
-        <h2>7. Perguntas que exigem aviso de sensibilidade</h2>
-        <p>
-          Certos temas podem acionar memórias dolorosas, provocar sofrimento emocional ou constrangimento. Isso é particularmente verdadeiro para questões sobre violência, abuso, discriminação, luto, doenças graves, saúde mental, sexualidade ou experiências traumáticas. Nesses casos, o formulário deve incluir um aviso claro antes do bloco sensível, informando que as perguntas podem ser desconfortáveis e reforçando a liberdade de não responder.
-        </p>
-        <p>
-          Esse aviso não existe apenas para cumprir resolução, mas para reconhecer que o participante é uma pessoa com história e vulnerabilidades. Ao explicitar a possibilidade de recusa e a disponibilidade de apoio quando previsto no protocolo, o pesquisador transforma o instrumento em uma ferramenta de cuidado, e não apenas de coleta de informação.
-        </p>
-      </section>
-
-      <section id="sec-8">
-        <h2>8. Proteção de dados e LGPD</h2>
-        <p>
-          A Lei Geral de Proteção de Dados Pessoais introduz princípios como finalidade, adequação, necessidade e minimização, que devem orientar a construção dos formulários. Quanto menos dados pessoais forem coletados, menor será a superfície de risco para o participante e menores serão as exigências de proteção técnica e administrativa.
-        </p>
-        <p>
-          O instrumento deve evitar registrar informações desnecessárias e orientar o pesquisador a não anotar comentários espontâneos que possam identificar diretamente uma pessoa, como nomes, números de documentos ou detalhes muito específicos de cargos e locais. Ao favorecer a anonimização já na coleta, o formulário facilita a conformidade com a LGPD e protege tanto os participantes quanto as instituições envolvidas.
-        </p>
-      </section>
-
-      <section id="sec-9">
-        <h2>9. Responsabilidades do pesquisador durante a aplicação</h2>
-        <p>
-          Mesmo o melhor formulário pode falhar se a aplicação for inadequada. O pesquisador é responsável por garantir condições de privacidade, por evitar qualquer forma de pressão e por acolher dúvidas e hesitações com respeito. É fundamental que as respostas sejam registradas de forma fiel, sem interpretações pessoais, comentários paralelos ou julgamentos.
-        </p>
-        <p>
-          Cabe também ao pesquisador reconhecer sinais de sofrimento, desconforto intenso ou insegurança. Nesses casos, interromper a entrevista e oferecer encaminhamento, quando previsto, é mais importante do que completar o instrumento. A maneira como o formulário é administrado faz parte da proteção ética tanto quanto a sua redação. Aplicar o instrumento com sensibilidade, atenção e respeito transforma o processo de coleta em um encontro mais humano e responsável.
-        </p>
-      </section>
-
-      <section id="sec-10">
-        <h2>10. Formulário de coleta de dados online</h2>
-        <p>
-          Quando a coleta de dados é realizada em ambiente virtual, por exemplo em plataformas como Google Formulários, a estrutura do caminho do participante precisa ser planejada com o mesmo cuidado ético do formulário em papel. Nesse contexto, o formulário online deve ser apresentado sempre em conjunto com o convite para participar da pesquisa e com o Termo de Consentimento Livre e Esclarecido, em uma sequência clara e previsível.
-        </p>
-        <p>
-          A forma recomendada é que o participante receba primeiro o convite, em linguagem simples, informando o tema da pesquisa, o caráter voluntário, o tempo estimado de resposta e o fato de que a participação será anônima ou sigilosa. Em seguida, deve lhe ser apresentado o TCLE completo, para leitura e aceite. Apenas após o aceite explícito do Termo o sistema deve liberar o acesso ao formulário de coleta de dados.
-        </p>
-        <p>
-          Uma boa prática é utilizar uma página inicial específica no formulário online, contendo o convite resumido, a informação de que o TCLE será apresentado na sequência e, quando desejado, links para consulta prévia ao texto integral do TCLE e ao modelo do instrumento. A primeira pergunta dessa página pode ser uma questão simples, como “Aceito o convite para participar da pesquisa”, com as opções “Sim” e “Não”. Ao selecionar “Não”, o participante encerra o processo sem qualquer prejuízo. Ao selecionar “Sim”, avança para o TCLE e, depois, para o formulário.
-        </p>
-        <p>
-          Essa estrutura reforça a autonomia em ambiente digital, evita que o participante seja conduzido diretamente às perguntas sem ter lido o TCLE e organiza o fluxo de forma intuitiva. O exemplo didático disponível em
-          <a href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>
-          ilustra essa lógica, combinando convite, TCLE e formulário em camadas sucessivas, com linguagem clara e foco na proteção do participante.
-        </p>
-        <p>
-          Nos formulários online, é importante ainda evitar a coleta automática de e mails, nomes de usuário ou qualquer identificador digital desnecessário. Sempre que possível, deve se desabilitar a exigência de login obrigatório e orientar o participante a não incluir informações pessoais nas respostas abertas. Assim, os mesmos princípios de anonimato, minimização de dados e respeito à privacidade são preservados no ambiente virtual.
-        </p>
-      </section>
-
-      <section id="sec-11">
-        <h2>11. GPT Personalizado</h2>
-        <p>
-          Para apoiar pesquisadores na verificação ética e técnica de seus instrumentos de coleta de dados, foi desenvolvido um GPT personalizado com base nas normas da CONEP e nas boas práticas nacionais de ética em pesquisa. Esse recurso analisa o formulário enviado, identifica possíveis riscos, aponta pendências frequentes e sugere ajustes que podem reduzir problemas na submissão ao Comitê de Ética.
-        </p>
-        <p>
-          O GPT personalizado é útil tanto para pesquisadores iniciantes, que ainda estão se familiarizando com o sistema CEP, Conep, quanto para pesquisadores experientes que desejam um checklist inteligente de revisão. Ele funciona como um apoio adicional para qualificar o instrumento, mas não substitui a responsabilidade ética do pesquisador nem a avaliação oficial do Comitê de Ética em Pesquisa. O acesso está disponível em:
-        </p>
-        <p>
-          <a href="https://bit.ly/gpt-fcd" target="_blank" rel="noopener noreferrer">https://bit.ly/gpt-fcd</a>
-        </p>
-        <p>
-          Recomenda se sempre evitar o envio de dados pessoais ou identificáveis de participantes ao utilizar essa ferramenta, mantendo a descrição dos instrumentos em formato anonimizado.
-        </p>
-      </section>
-
-      <section id="sec-12">
-        <h2>12. Considerações finais</h2>
-        <p>
-          A construção de um formulário de coleta de dados é uma etapa central do processo de pesquisa em seres humanos, porque representa o ponto de contato mais visível entre o projeto e a vida concreta dos participantes. Um instrumento bem elaborado não é apenas tecnicamente eficiente, mas expressa respeito, responsabilidade e compromisso ético. Cada decisão de perguntar ou não perguntar, de detalhar ou simplificar, de tornar obrigatória ou opcional uma resposta, comunica ao participante como ele é visto pelo pesquisador.
-        </p>
-        <p>
-          Seguir as recomendações apresentadas fortalece a autonomia do participante, minimiza riscos, reduz desconfortos e garante que cada pergunta seja justificada, clara e necessária. Ao mesmo tempo, um formulário bem estruturado produz dados mais confiáveis, reduz vieses e aumenta a robustez científica do estudo. Em um cenário em que a sociedade exige transparência, proteção de dados e respeito às diferenças, formular instrumentos seguros não é apenas cumprir normas, mas um gesto consciente de cuidado.
-        </p>
-        <p>
-          Ao respeitar esses princípios, o pesquisador contribui para uma ciência mais humana e socialmente legítima. A qualidade do instrumento reflete a qualidade da relação entre pesquisa e sociedade, e ajuda a construir um ambiente em que os participantes se sintam protegidos, valorizados e dispostos a colaborar com a produção de conhecimento que realmente importa.
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      Ebook de apoio à construção de formulários de coleta de dados em pesquisas com seres humanos, uso acadêmico e regulatório.  
-      Disciplina de Pesquisa em Ciências da Saúde, UNCISAL, 2025.  
-      Elaboração e curadoria de conteúdo, Aldemar Araujo e equipe de pesquisa.  
-      Uso educacional, não comercial. Recomenda se citação da fonte ao utilizar trechos deste material.
-    </footer>
-  </div>
-
-  <script>
-    (function() {
-      var btn = document.getElementById("toggle-theme");
-      var stored = window.localStorage.getItem("theme");
-
-      if (stored === "dark") {
-        document.body.classList.add("dark");
-        btn.setAttribute("aria-pressed", "true");
-      }
-
-      btn.addEventListener("click", function() {
-        var isDark = document.body.classList.toggle("dark");
-        btn.setAttribute("aria-pressed", isDark ? "true" : "false");
-        window.localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-    })();
-  </script>
 </body>
 </html>
