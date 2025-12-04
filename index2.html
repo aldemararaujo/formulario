@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ebook Pesquisa em Ciências da Saúde</title>
+
+<style>
+
+/* Fonte, reset e comportamento básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/* Paleta clara e escura no padrão do ebook */
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --card: #f5f5f5;
+    --border: #dddddd;
+    --link: #0050c8;
+}
+
+.dark-mode {
+    --bg: #111111;
+    --text: #ffffff;
+    --card: #1b1b1b;
+    --border: #333333;
+    --link: #4da3ff;
+}
+
+/* Container principal */
+.container {
+    max-width: 820px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Título central */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Lista de capítulos */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* Links */
+.card a {
+    text-decoration: none;
+    color: var(--link);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Botão de modo claro/escuro */
+.toggle-btn {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<button class="toggle-btn" onclick="toggleDarkMode()">Alternar modo claro e escuro</button>
+
+<h1>Ebook Pesquisa em Ciências da Saúde</h1>
+<div class="subtitle">Guia estruturado das etapas fundamentais do processo de pesquisa</div>
+
+<!-- Lista de capítulos -->
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/tcle.html">1. Termo de Consentimento Livre e Esclarecido (TCLE)</a>
+</div>
+
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/fcd.html">2. Formulário de Coleta de Dados</a>
+</div>
+
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/tdi.html">3. Tabela de Dados Individuais</a>
+</div>
+
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/risben.html">4. Riscos e Benefícios</a>
+</div>
+
+<div class="card">
+    <a href="https://aldemararaujo.github.io/ebook/autpes.html">5. Autocrítica do Pesquisador</a>
+</div>
+
+<footer>
+© 2024 Aldemar Araujo Castro. Licença CC BY-NC-SA 4.0
+</footer>
+
+</div>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+</body>
+</html>
